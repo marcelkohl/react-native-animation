@@ -1,5 +1,8 @@
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
+
 # react-native-animation
-flip card animation effect using react native
+Flip card animation effect using react native. An exercise to improve react native skills.
 
 ![sample](https://github.com/marcelkohl/react-native-animation/blob/master/sample/Screen%20record%20from%202020-05-08%2011.13.33.gif?raw=true)
 
