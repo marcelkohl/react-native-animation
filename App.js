@@ -71,14 +71,14 @@ export default class animatedBasic extends Component {
     return (
         <View style={styles.mainContainer}>
             <View style={styles.fullScreen}>
-              <ImageBackground style={styles.backgroundImage} imageStyle={{resizeMode: 'repeat'}} source={{ uri: tablePattern }}/>
+              <ImageBackground style={styles.backgroundImage} imageStyle={{resizeMode: 'repeat'}} source={tablePattern}/>
             </View>
 
             <View style={styles.contentContainer}>
                 <View style={styles.cardContainer}>
                     <View>
                       <Animated.View style={[styles.flipCard, frontAnimatedStyle, {opacity: this.frontOpacity}]}>
-                          <Image style={styles.flipImage} source={cardFace}/>
+                      <Image style={styles.flipImage} source={cardFace}/>
                       </Animated.View>
                       <Animated.View style={[styles.flipCard, styles.flipCardBack, backAnimatedStyle, {opacity: this.backOpacity}]}>
                           <Image style={styles.flipImage} source={cardBack}/>
