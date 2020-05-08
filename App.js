@@ -65,8 +65,8 @@ export default class animatedBasic extends Component {
     }
 
     const tablePattern = require('./assets/table.jpeg');
-    const cardFace = require('./assets/card-red-back.png');
-    const cardBack = require('./assets/card-10-ouro.png');
+    const cardFace = require('./assets/card-back.png');
+    const cardBack = require('./assets/ace_diamonds.jpeg');
 
     return (
         <View style={styles.mainContainer}>
@@ -130,14 +130,14 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     flipCardBack: {
-        backgroundColor: "red",
+        backgroundColor: "gray",
         position: "absolute",
         top: 0,
     },
     flipImage: {
         borderRadius:10,
-        width: 198,
-        height: 298,
+        width: 200,
+        height: 300,
         overflow: "hidden",
     },
     fullScreen: {
