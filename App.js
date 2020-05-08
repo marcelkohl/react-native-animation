@@ -6,10 +6,11 @@ import {
   View,
   TouchableOpacity,
   Animated,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
 
-export default class animatedbasic extends Component {
+export default class animatedBasic extends Component {
   componentWillMount() {
     this.animatedValue = new Animated.Value(0);
     this.value = 0;
@@ -63,70 +64,100 @@ export default class animatedbasic extends Component {
       ]
     }
 
+    const tablePattern = require('./assets/table.jpeg');
+    const cardFace = require('./assets/card-red-back.png');
+    const cardBack = require('./assets/card-10-ouro.png');
+
     return (
-      <View style={styles.container}>
-        <View>
-          <Animated.View style={[styles.flipCard, frontAnimatedStyle, {opacity: this.frontOpacity}]}>
-              <Image
-                style={styles.flipImage}
-                source={require('./assets/card-red-back.png')}
-              />
-          </Animated.View>
-          <Animated.View style={[styles.flipCard, styles.flipCardBack, backAnimatedStyle, {opacity: this.backOpacity}]}>
-              <Image
-                style={styles.flipImage}
-                source={require('./assets/card-10-ouro.png')}
-              />
-          </Animated.View>
-        </View>
-        <TouchableOpacity onPress={() => this.flipCard()}>
-          <Text>Flip!</Text>
-        </TouchableOpacity>
+        <View style={styles.mainContainer}>
+            <View style={styles.fullScreen}>
+              <ImageBackground style={styles.backgroundImage} imageStyle={{resizeMode: 'repeat'}} source={{ uri: tablePattern }}/>
+            </View>
+
+            <View style={styles.contentContainer}>
+                <View style={styles.cardContainer}>
+                    <View>
+                      <Animated.View style={[styles.flipCard, frontAnimatedStyle, {opacity: this.frontOpacity}]}>
+                          <Image style={styles.flipImage} source={cardFace}/>
+                      </Animated.View>
+                      <Animated.View style={[styles.flipCard, styles.flipCardBack, backAnimatedStyle, {opacity: this.backOpacity}]}>
+                          <Image style={styles.flipImage} source={cardBack}/>
+                      </Animated.View>
+                    </View>
+                </View>
+                <View style={styles.buttonArea}>
+                    <TouchableOpacity style={styles.button} onPress={() => this.flipCard()}>
+                        <Text style={{color:'white'}}>Flip!</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  flipCard: {
-    borderRadius:10,
-    width: 200,
-    height: 300,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'blue',
-    backfaceVisibility: 'hidden',
-
-    shadowColor: "#000",
-    shadowOffset: {
-    	width: 0,
-    	height: 1,
+    mainContainer: {
+        flex: 1
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
+    contentContainer: {
+        flex: 1,
+        backgroundColor: 'transparent',
+        justifyContent: 'center'
+    },
+    cardContainer: {
+        /*flex: 1,*/
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    flipCard: {
+        borderRadius:10,
+        width: 200,
+        height: 300,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backfaceVisibility: 'hidden',
 
-    elevation: 3,
-  },
-  flipCardBack: {
-    backgroundColor: "red",
-    position: "absolute",
-    top: 0,
-  },
-  flipText: {
-    width: 90,
-    fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold',
+        shadowColor: "#000",
+        shadowOffset: {
+        	width: 0,
+        	height: 1,
+        },
+
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
+    },
+    flipCardBack: {
+        backgroundColor: "red",
+        position: "absolute",
+        top: 0,
     },
     flipImage: {
-      borderRadius:10,
-      width: 198,
-      height: 298,
-      overflow: "hidden",
-    }
+        borderRadius:10,
+        width: 198,
+        height: 298,
+        overflow: "hidden",
+    },
+    fullScreen: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+    },
+    backgroundImage: {
+        flex: 1
+    },
+    buttonArea: {
+        alignItems: "center"
+    },
+    button: {
+        alignItems: "center",
+        backgroundColor: "#000",
+        padding: 10,
+        margin: 10,
+        width: 200
+    },
 });
